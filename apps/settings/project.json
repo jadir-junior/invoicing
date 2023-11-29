@@ -11,7 +11,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "customWebpackConfig": {
-          "path": "apps/settings/webpack.config.js"
+          "path": "./webpack.config.js"
         },
         "outputPath": "dist/apps/settings",
         "index": "apps/settings/src/index.html",

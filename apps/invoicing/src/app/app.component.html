@@ -1,1 +1,8 @@
-<invoicing-nx-welcome></invoicing-nx-welcome> <router-outlet></router-outlet>
+<a href="/">Title</a>
+<h1>{{ loginDisplay }}</h1>
+
+@if(!loginDisplay) {
+<button (click)="loginRedirect()">Login</button>
+} @else {
+<button (click)="logout()">Logout</button>
+}

@@ -7,9 +7,12 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "customWebpackConfig": {
+          "path": "./webpack.config.js"
+        },
         "outputPath": "dist/apps/invoicing",
         "index": "apps/invoicing/src/index.html",
         "main": "apps/invoicing/src/main.ts",
@@ -50,7 +53,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "buildTarget": "invoicing:build:production"
