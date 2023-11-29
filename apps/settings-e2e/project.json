@@ -1,0 +1,33 @@
+{
+  "name": "settings-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/settings-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/settings-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "settings:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "settings:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "settings:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/settings-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["settings"]
+}
