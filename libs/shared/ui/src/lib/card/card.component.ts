@@ -7,7 +7,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IvTemplate } from '@invoicing/iv-template';
+import { IvTemplate } from '../template/iv-template.directive';
 
 @Component({
   selector: 'iv-card',

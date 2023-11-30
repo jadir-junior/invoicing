@@ -1,5 +1,5 @@
 {
-  "extends": ["../../../../.eslintrc.json"],
+  "extends": ["../../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "invoicing",
+            "prefix": "iv",
             "style": "kebab-case"
           }
         ]

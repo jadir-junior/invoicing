@@ -14,10 +14,11 @@ import {
   InteractionStatus,
   RedirectRequest,
 } from '@azure/msal-browser';
+import { CardComponent } from '@invoicing/card';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [NxWelcomeComponent, CardComponent, RouterModule],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

@@ -1,4 +1,4 @@
-import { IvTemplate } from '@invoicing/iv-template';
+import { IvTemplate } from '../template/iv-template.directive';
 import { CardComponent } from './card.component';
 import { render, screen } from '@testing-library/angular';
 
