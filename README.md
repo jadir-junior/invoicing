@@ -63,3 +63,17 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 ## Layout expiration
 
 -[Fuse Theme](https://angular-material.fusetheme.com/sign-in?redirectURL=%2Fdashboards%2Fproject)
+
+## Scripts
+
+- Component
+
+```
+npx nx g @nx/angular:component button --directory=libs/shared/ui/src/lib/button --standalone --export
+```
+
+- Stortybook
+
+```
+npx nx g @nx/angular:stories
+```

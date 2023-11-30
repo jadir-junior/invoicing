@@ -2,11 +2,12 @@ import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { CardComponent } from './card.component';
 
 import { IvTemplate } from '../template/iv-template.directive';
+import { IvButtonComponent } from '../button/iv-button.component';
 
 const meta: Meta<CardComponent> = {
   component: CardComponent,
   title: 'Card',
-  decorators: [moduleMetadata({ imports: [IvTemplate] })],
+  decorators: [moduleMetadata({ imports: [IvTemplate, IvButtonComponent] })],
 };
 export default meta;
 type Story = StoryObj<CardComponent>;
@@ -35,8 +36,10 @@ export const Advanced: Story = {
         quas!
         </p>
         <ng-template ivTemplate="footer">
-          <button>Save</button>
-          <button>Cancel</button>
+          <div style="display: flex; gap: 0.5rem">
+            <iv-button>Save</iv-button>
+            <iv-button severity="secondary">Cancel</iv-button>
+          </div>
         </ng-template>
       </iv-card>
     `,
