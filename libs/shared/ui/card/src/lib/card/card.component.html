@@ -2,4 +2,18 @@
   @if(headerTemplate) {
   <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
   }
+  <div class="iv-card-body">
+    @if(titleTemplate) {
+    <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+    }
+    <div class="iv-card-content">
+      <ng-content></ng-content>
+      <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>
+    </div>
+    @if(footerTemplate) {
+    <div class="iv-card-footer">
+      <ng-template *ngTemplateOutlet="footerTemplate"></ng-template>
+    </div>
+    }
+  </div>
 </div>
