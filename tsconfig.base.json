@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@invoicing/authentication": ["libs/authentication/src/index.ts"],
+      "@invoicing/card": ["libs/shared/ui/card/src/index.ts"],
+      "@invoicing/iv-template": ["libs/shared/ui/iv-template/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
