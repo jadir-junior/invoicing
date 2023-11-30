@@ -18,6 +18,18 @@ describe('CardComponent', () => {
     expect(screen.getByText('Header')).toBeInTheDocument();
   });
 
+  it('render the title when pass the prop', async () => {
+    await render(
+      `<iv-card title="Title">
+    </iv-card>`,
+      {
+        imports: [CardComponent, IvTemplate],
+      }
+    );
+
+    expect(screen.getByText('Title')).toBeInTheDocument();
+  });
+
   it('render the title in body', async () => {
     await render(
       `<iv-card>
@@ -74,5 +86,32 @@ describe('CardComponent', () => {
     );
 
     expect(screen.getByText('footer')).toBeInTheDocument();
+  });
+
+  it('render card with subtitle when pass props', async () => {
+    await render(
+      `<iv-card subtitle="subtitle">
+    </iv-card>`,
+      {
+        imports: [CardComponent],
+      }
+    );
+
+    expect(screen.getByText('subtitle')).toBeInTheDocument();
+  });
+
+  it('render card with subtitle', async () => {
+    await render(
+      `<iv-card>
+      <ng-template ivTemplate="subtitle">
+       <p>subtitle</p>
+      </ng-template>
+    </iv-card>`,
+      {
+        imports: [CardComponent, IvTemplate],
+      }
+    );
+
+    expect(screen.getByText('subtitle')).toBeInTheDocument();
   });
 });

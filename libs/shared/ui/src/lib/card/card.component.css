@@ -7,3 +7,19 @@
 .iv-card .iv-card-body {
   padding: 2rem;
 }
+
+.iv-card .iv-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.iv-card .iv-card-subtitle {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: #6c757d;
+}
+
+.iv-card .iv-card-footer {
+  padding: 1.25rem 0 0 0;
+}

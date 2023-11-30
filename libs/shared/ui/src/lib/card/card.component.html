@@ -1,10 +1,20 @@
-<div class="iv-card">
+<div class="iv-card" [ngStyle]="style">
   @if(headerTemplate) {
-  <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+  <div class="iv-card-header">
+    <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+  </div>
   }
   <div class="iv-card-body">
-    @if(titleTemplate) {
-    <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+    @if(title || titleTemplate) {
+    <div class="iv-card-title">
+      {{ title }}
+      <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+    </div>
+    } @if(subtitle || subtitleTemplate) {
+    <div class="iv-card-subtitle">
+      {{ subtitle }}
+      <ng-container *ngTemplateOutlet="subtitleTemplate"></ng-container>
+    </div>
     }
     <div class="iv-card-content">
       <ng-content></ng-content>
