@@ -1,14 +1,33 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { FormsModule } from '@angular/forms';
+import { InputTextDirective } from '@invoicing/ui';
+
+interface Hero {
+  id: number;
+  name: string;
+  power: string;
+  alterEgo?: string;
+}
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [FormsModule, CommonModule, InputTextDirective],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'settings';
+  powers = ['Really Smaert', 'Super Flexible', 'Super Hot', 'Weather Changer'];
+  model: Hero = {
+    id: 18,
+    name: 'Dr. IQ',
+    power: this.powers[0],
+    alterEgo: 'Chuck Overstreet',
+  };
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+  }
 }

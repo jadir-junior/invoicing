@@ -1,0 +1,88 @@
+:root {
+  --text-color: #4b5563;
+
+  --primary-color: #263148;
+}
+
+* {
+  font-family: Poppins;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+.iv-input-text {
+  font-size: 1rem;
+  padding: 0.75rem 0.75rem;
+  color: var(--text-color);
+  background: white;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  appearance: none;
+  border-radius: 6px;
+}
+
+.iv-input-text:enabled:hover {
+  border-color: var(--primary-color);
+}
+
+.iv-input-text:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.05rem #2e3b57;
+  border-color: var(--primary-color);
+}
+
+.iv-input-text.ng-dirty.ng-invalid {
+  border-color: #e24c4c;
+}
+
+.iv-input-text:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.iv-input-text-size-small {
+  padding: 0.65625rem;
+  font-size: 0.875rem;
+}
+
+.iv-input-text-size-large {
+  padding: 0.9375rem;
+  font-size: 1.25rem;
+}
+
+.iv-input-icon-left,
+.iv-input-icon-right {
+  position: relative;
+  display: inline-block;
+}
+
+.iv-input-icon-left > i,
+.iv-input-icon-right > i {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.7rem;
+}
+
+.iv-input-icon-left > i:first-of-type {
+  left: 0.75rem;
+  color: #6b7280;
+}
+
+.iv-input-icon-left > .iv-input-text {
+  padding-left: 2.5rem;
+}
+
+.iv-input-icon-right > i:first-of-type {
+  right: 0.75rem;
+  color: #6b7280;
+}
+
+.iv-input-icon-right > .iv-input-text {
+  padding-right: 2.5rem;
+}

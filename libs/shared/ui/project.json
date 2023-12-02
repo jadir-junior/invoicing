@@ -29,7 +29,11 @@
         "port": 4400,
         "configDir": "libs/shared/ui/.storybook",
         "browserTarget": "ui:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": [
+          "libs/shared/ui/src/styles.css",
+          "node_modules/@material-design-icons/font/index.css"
+        ]
       },
       "configurations": {
         "ci": {

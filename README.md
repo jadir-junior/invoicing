@@ -66,14 +66,22 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 
 ## Scripts
 
-- Component
+### Component
 
 ```
 npx nx g @nx/angular:component button --directory=libs/shared/ui/src/lib/button --standalone --export
 ```
 
-- Stortybook
+### Stortybook
+
+- create new story to component
 
 ```
 npx nx g @nx/angular:stories
+```
+
+- running storybook
+
+```
+npx nx storybook ui
 ```

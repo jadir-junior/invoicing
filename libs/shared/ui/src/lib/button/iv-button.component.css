@@ -9,8 +9,8 @@
 
 .iv-button.iv-button-primary {
   color: white;
-  background-color: #263148;
-  border: 1px solid #263148;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 .iv-button.iv-button-primary:not(:disabled):hover {
