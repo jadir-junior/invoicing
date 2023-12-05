@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   AfterContentInit,
   Component,
@@ -9,8 +8,9 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IvTemplate } from '../template/iv-template.directive';
+import { TemplateComponent } from '../template/template.component';
 
-type klass = { [klass: string]: any } | null | undefined;
+type klass = { [klass: string]: string } | null | undefined;
 
 @Component({
   selector: 'iv-card',
@@ -26,11 +26,11 @@ export class CardComponent implements AfterContentInit {
 
   @ContentChildren(IvTemplate) templates: QueryList<IvTemplate> | undefined;
 
-  headerTemplate: TemplateRef<any> | null = null;
-  titleTemplate: TemplateRef<any> | null = null;
-  subtitleTemplate: TemplateRef<any> | null = null;
-  contentTemplate: TemplateRef<any> | null = null;
-  footerTemplate: TemplateRef<any> | null = null;
+  headerTemplate: TemplateRef<TemplateComponent> | null = null;
+  titleTemplate: TemplateRef<TemplateComponent> | null = null;
+  subtitleTemplate: TemplateRef<TemplateComponent> | null = null;
+  contentTemplate: TemplateRef<TemplateComponent> | null = null;
+  footerTemplate: TemplateRef<TemplateComponent> | null = null;
 
   ngAfterContentInit(): void {
     this.templates?.forEach((item) => {
