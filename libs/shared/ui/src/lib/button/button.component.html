@@ -1,0 +1,6 @@
+<button [ngClass]="buttonClass" (click)="onClick.emit($event)">
+  <ng-content></ng-content>
+  @if(label) {
+  <span class="iv-button-label">{{ label }}</span>
+  }
+</button>
