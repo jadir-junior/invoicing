@@ -11,10 +11,24 @@ type Story = StoryObj<IvButtonComponent>;
 export const Basic: Story = {
   args: {
     label: 'Submit',
+    link: false,
   },
   argTypes: {
     severity: {
       options: ['primary', 'secondary'],
+      control: { type: 'radio' },
+    },
+  },
+};
+
+export const Link: Story = {
+  args: {
+    label: 'Submit',
+    link: true,
+  },
+  argTypes: {
+    link: {
+      options: [true, false],
       control: { type: 'radio' },
     },
   },

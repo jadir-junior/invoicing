@@ -77,4 +77,17 @@ describe('IvButtonComponent', () => {
     expect(button).toBeInTheDocument();
     expect(click).toHaveBeenCalled();
   });
+
+  it('render button as a link', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        label: 'Submit',
+        link: true,
+      },
+    });
+
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    expect(button).toHaveClass('iv-button-link');
+  });
 });

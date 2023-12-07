@@ -2,7 +2,7 @@ import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { CardComponent } from './card.component';
 
 import { IvTemplate } from '../template/iv-template.directive';
-import { IvButtonComponent } from '../button/iv-button.component';
+import { IvButtonComponent } from '../button/button.component';
 
 const meta: Meta<CardComponent> = {
   component: CardComponent,

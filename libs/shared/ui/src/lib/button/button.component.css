@@ -30,3 +30,19 @@
   color: #263148;
   border-color: #d6c066;
 }
+
+.iv-button.iv-button-link {
+  color: var(--primary-color);
+  background: transparent;
+  border: transparent;
+}
+
+.iv-button.iv-button-link:not(:disabled):hover {
+  background: transparent;
+  color: var(--primary-color);
+  border: transparent;
+}
+
+.iv-button.iv-button-link:not(disabled):hover .iv-button-label {
+  text-decoration: underline;
+}

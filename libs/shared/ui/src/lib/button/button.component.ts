@@ -20,6 +20,7 @@ type Severity = 'primary' | 'secondary' | 'default';
 export class IvButtonComponent {
   @Input() label: string | undefined;
   @Input() severity: Severity = 'primary';
+  @Input() link = false;
 
   @Output() onClick: EventEmitter<Event> = new EventEmitter();
 
@@ -27,6 +28,7 @@ export class IvButtonComponent {
     return {
       'iv-button': true,
       [`iv-button-${this.severity}`]: true,
+      'iv-button-link': this.link,
     };
   }
 }
