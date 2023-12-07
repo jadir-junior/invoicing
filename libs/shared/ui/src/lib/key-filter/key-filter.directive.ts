@@ -1,66 +1,40 @@
-import { Directive, Provider, forwardRef, Input } from '@angular/core';
-import {
-  AbstractControl,
-  NG_VALIDATORS,
-  ValidationErrors,
-  Validator,
-} from '@angular/forms';
+/* eslint-disable no-useless-escape */
+import { Directive, Input, HostListener } from '@angular/core';
+import { regexPattern } from './regex-pattern';
 
-export type KeyFilterPattern =
-  | 'pint'
-  | 'int'
-  | 'pnum'
-  | 'money'
-  | 'num'
-  | 'hex'
-  | 'email'
-  | 'alpha'
-  | 'alphanum';
+export type KeyFilterPattern = 'int' | 'money' | 'num';
 
-  const DEFAULT_MASK: Record<KeyFilterPattern, RegExp> = {
-    pint: /[\d]/,
-    int: /[\d\-]/,
-    pnum: /[\d\.]/,
-    money: /[\d\.\s,]/,
-    num: /[\d\-\.]/,
-    hex: /[0-9a-f]/i,
-    email: /[a-z0-9_\.\-@]/i,
-    alpha: /[a-z_]/i,
-    alphanum: /[a-z0-9]_/i
-  }
+export type Pattern = RegExp | KeyFilterPattern | null | undefined;
 
-export const KEYFILTER_VALIDATOR: Provider = {
-  provide: NG_VALIDATORS,
-  useExisting: forwardRef(() => KeyFilterDirective),
-  multi: true,
+export const DEFAULT_MASK: Record<KeyFilterPattern, RegExp> = {
+  int: /[\d\-]/,
+  money: /[\d\.\s,]/,
+  num: /[\d\-\.]/,
 };
 
 @Directive({
   selector: '[ivKeyFilter]',
-  providers: [KEYFILTER_VALIDATOR],
   standalone: true,
 })
-export class KeyFilterDirective implements Validator {
-  @Input('ivKeyFilter') set pattern(
-    pattern: RegExp | KeyFilterPattern | null | undefined
-  ) {
-    this._pattern = pattern;
+export class KeyFilterDirective {
+  @Input({ alias: 'ivKeyFilter', transform: regexPattern })
+  regex: Pattern;
 
-    if(pattern instanceof RegExp) {
-      this.regex = pattern
-    } else if (pattern in )
+  @HostListener('keypress', ['$event'])
+  onKeyPress(keyboardEvent: KeyboardEvent) {
+    const code = keyboardEvent.code;
+    const key = keyboardEvent.key;
+
+    if (code === 'Enter') {
+      return;
+    }
+
+    if (!this.validatePattern(key)) {
+      keyboardEvent.preventDefault();
+    }
   }
 
-  _pattern: RegExp | KeyFilterPattern | null | undefined;
-  regex: RegExp = /./;
-
-  constructor() {}
-
-  validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    throw new Error('Method not implemented.');
-  }
-
-  registerOnValidatorChange?(fn: () => void): void {
-    throw new Error('Method not implemented.');
+  private validatePattern(key: string): boolean {
+    return (<RegExp>this.regex).test(key);
   }
 }

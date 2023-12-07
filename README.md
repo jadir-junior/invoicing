@@ -85,3 +85,17 @@ npx nx g @nx/angular:stories
 ```
 npx nx storybook ui
 ```
+
+### Tests
+
+- A project
+
+```
+npx nx test ui
+```
+
+- A file
+
+```
+npx nx test ui --testFile=regex-pattern
+```

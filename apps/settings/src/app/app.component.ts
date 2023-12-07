@@ -1,3 +1,4 @@
+import { KeyFilterDirective } from './../../../../libs/shared/ui/src/lib/key-filter/key-filter.directive';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +13,7 @@ interface Hero {
 
 @Component({
   standalone: true,
-  imports: [FormsModule, CommonModule, InputTextDirective],
+  imports: [FormsModule, CommonModule, InputTextDirective, KeyFilterDirective],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

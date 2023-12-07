@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen } from '@testing-library/angular';
-import { IvButtonComponent } from './iv-button.component';
+import { IvButtonComponent } from './button.component';
 import userEvent from '@testing-library/user-event';
 
 describe('IvButtonComponent', () => {
