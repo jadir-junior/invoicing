@@ -1,6 +1,16 @@
 <button [ngClass]="buttonClass" (click)="onClick.emit($event)">
-  <ng-content></ng-content>
-  @if(label) {
+  @if(icon) {
+  <span
+    [ngClass]="iconClass"
+    class="material-icons-outlined"
+    aria-label="iv-button-icon"
+  >
+    {{ icon }}
+  </span>
+  } @if(label) {
   <span class="iv-button-label">{{ label }}</span>
   }
+  <div #content>
+    <ng-content></ng-content>
+  </div>
 </button>

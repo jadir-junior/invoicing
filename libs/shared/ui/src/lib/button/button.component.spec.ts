@@ -15,6 +15,7 @@ describe('IvButtonComponent', () => {
 
     expect(button).toBeInTheDocument();
     expect(button).toHaveClass('iv-button');
+    expect(button).not.toHaveClass('iv-button-icon-only');
   });
 
   it('render basic button with content', async () => {
@@ -89,5 +90,44 @@ describe('IvButtonComponent', () => {
     const button = screen.getByRole('button', { name: 'Submit' });
 
     expect(button).toHaveClass('iv-button-link');
+  });
+
+  it('render a icon button only', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        icon: 'done',
+      },
+    });
+
+    expect(screen.getByRole('button')).toHaveClass('iv-button-icon-only');
+  });
+
+  it('render a button with icon left', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        icon: 'done',
+        label: 'Submit',
+      },
+    });
+
+    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByLabelText('iv-button-icon')).toHaveClass(
+      'iv-button-icon-left'
+    );
+  });
+
+  it('render a button with icon right', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        icon: 'done',
+        label: 'Submit',
+        iconPosition: 'right',
+      },
+    });
+
+    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByLabelText('iv-button-icon')).toHaveClass(
+      'iv-button-icon-right'
+    );
   });
 });

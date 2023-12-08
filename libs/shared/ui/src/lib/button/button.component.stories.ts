@@ -33,3 +33,23 @@ export const Link: Story = {
     },
   },
 };
+
+export const Icons: Story = {
+  args: {
+    label: 'Submit',
+    icon: 'done',
+    iconPosition: 'left',
+  },
+  argTypes: {
+    iconPosition: {
+      options: ['left', 'right'],
+      control: { type: 'radio' },
+    },
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    icon: 'done',
+  },
+};

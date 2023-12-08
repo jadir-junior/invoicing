@@ -4,6 +4,8 @@ import {
   ChangeDetectionStrategy,
   Output,
   EventEmitter,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -22,13 +24,32 @@ export class IvButtonComponent {
   @Input() severity: Severity = 'primary';
   @Input() link = false;
 
+  @Input() icon?: string;
+  @Input() iconPosition: 'right' | 'left' = 'left';
+
+  @ViewChild('content') content!: ElementRef;
+
   @Output() onClick: EventEmitter<Event> = new EventEmitter();
+
+  isContentEmpty(): boolean {
+    return this.content?.nativeElement?.childNodes?.length ? true : false;
+  }
+
+  get iconClass(): { [klass: string]: string | boolean } {
+    return {
+      'iv-button-icon': true,
+      [`iv-button-icon-${this.iconPosition}`]:
+        this.isContentEmpty() || this.label ? true : false,
+    };
+  }
 
   get buttonClass(): { [klass: string]: string | boolean } {
     return {
       'iv-button': true,
       [`iv-button-${this.severity}`]: true,
       'iv-button-link': this.link,
+      'iv-button-icon-only':
+        !this.isContentEmpty() && !this.label ? true : false,
     };
   }
 }
