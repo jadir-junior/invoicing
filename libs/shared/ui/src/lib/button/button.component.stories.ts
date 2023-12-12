@@ -15,6 +15,15 @@ export const Basic: Story = {
   },
 };
 
+export const Content: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <iv-button type="submit">Submit</iv-button>
+    `,
+  }),
+};
+
 export const Link: Story = {
   args: {
     label: 'Submit',
@@ -67,5 +76,12 @@ export const Severity: Story = {
       ],
       control: { type: 'radio' },
     },
+  },
+};
+
+export const Block: Story = {
+  args: {
+    label: 'Submit',
+    block: true,
   },
 };

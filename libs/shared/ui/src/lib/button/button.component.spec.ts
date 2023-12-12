@@ -200,4 +200,15 @@ describe('IvButtonComponent', () => {
       'iv-button-icon-right'
     );
   });
+
+  it('render a button with block property', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        label: 'Submit',
+        block: true,
+      },
+    });
+
+    expect(screen.getByRole('button')).toHaveClass('iv-button-block');
+  });
 });
