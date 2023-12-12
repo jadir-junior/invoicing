@@ -22,21 +22,76 @@
 }
 
 .iv-button.iv-button-primary:not(:disabled):hover {
-  background-color: #19202d;
+  background-color: var(--primary-color-dark);
   color: white;
-  border-color: #19202d;
+  border-color: var(--primary-color-dark);
 }
 
 .iv-button.iv-button-secondary {
   color: #263148;
-  background-color: #f7dd72;
-  border: 1px solid #f7dd72;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .iv-button.iv-button-secondary:not(:disabled):hover {
-  background-color: #d6c066;
+  background-color: var(--secondary-color-dark);
   color: #263148;
-  border-color: #d6c066;
+  border-color: var(--secondary-color-dark);
+}
+
+.iv-button.iv-button-success {
+  color: white;
+  background-color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.iv-button.iv-button-success:not(:disabled):hover {
+  background-color: var(--success-color-dark);
+  border-color: var(--success-color-dark);
+}
+
+.iv-button.iv-button-info {
+  color: white;
+  background-color: var(--info-color);
+  border: 1px solid var(--info-color);
+}
+
+.iv-button.iv-button-info:not(:disabled):hover {
+  background-color: var(--info-color-dark);
+  border-color: var(--info-color-dark);
+}
+
+.iv-button.iv-button-warning {
+  color: white;
+  background-color: var(--warning-color);
+  border: 1px solid var(--warning-color);
+}
+
+.iv-button.iv-button-warning:not(:disabled):hover {
+  background-color: var(--warning-color-dark);
+  border-color: var(--warning-color-dark);
+}
+
+.iv-button.iv-button-help {
+  color: white;
+  background-color: var(--help-color);
+  border: 1px solid var(--help-color);
+}
+
+.iv-button.iv-button-warning:not(:disabled):hover {
+  background-color: var(--warning-color-dark);
+  border-color: var(--warning-color-dark);
+}
+
+.iv-button.iv-button-danger {
+  color: white;
+  background-color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+}
+
+.iv-button.iv-button-danger:not(:disabled):hover {
+  background-color: var(--danger-color-dark);
+  border-color: var(--danger-color-dark);
 }
 
 .iv-button.iv-button-link {

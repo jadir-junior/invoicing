@@ -56,6 +56,76 @@ describe('IvButtonComponent', () => {
     expect(button).toHaveClass('iv-button-secondary');
   });
 
+  it('render basic button with severity success', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        severity: 'success',
+        label: 'Submit',
+      },
+    });
+
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('iv-button-success');
+  });
+
+  it('render basic button with severity info', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        severity: 'info',
+        label: 'Submit',
+      },
+    });
+
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('iv-button-info');
+  });
+
+  it('render basic button with severity warning', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        severity: 'warning',
+        label: 'Submit',
+      },
+    });
+
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('iv-button-warning');
+  });
+
+  it('render basic button with severity help', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        severity: 'help',
+        label: 'Submit',
+      },
+    });
+
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('iv-button-help');
+  });
+
+  it('render basic button with severity danger', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        severity: 'danger',
+        label: 'Submit',
+      },
+    });
+
+    const button = screen.getByRole('button', { name: 'Submit' });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('iv-button-danger');
+  });
+
   it('render basic button and emit event in output onClick', async () => {
     const click = jest.fn();
     const user = userEvent.setup();

@@ -13,12 +13,6 @@ export const Basic: Story = {
     label: 'Submit',
     link: false,
   },
-  argTypes: {
-    severity: {
-      options: ['primary', 'secondary'],
-      control: { type: 'radio' },
-    },
-  },
 };
 
 export const Link: Story = {
@@ -51,5 +45,27 @@ export const Icons: Story = {
 export const IconOnly: Story = {
   args: {
     icon: 'done',
+  },
+};
+
+export const Severity: Story = {
+  args: {
+    label: 'Submit',
+    link: false,
+    severity: 'primary',
+  },
+  argTypes: {
+    severity: {
+      options: [
+        'primary',
+        'secondary',
+        'success',
+        'info',
+        'warning',
+        'help',
+        'danger',
+      ],
+      control: { type: 'radio' },
+    },
   },
 };

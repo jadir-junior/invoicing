@@ -2,6 +2,25 @@
   --text-color: #4b5563;
 
   --primary-color: #263148;
+  --primary-color-dark: #19202d;
+
+  --secondary-color: #f7dd72;
+  --secondary-color-dark: #d6c066;
+
+  --success-color: #18ae4f;
+  --success-color-dark: #159042;
+
+  --info-color: #1b91c8;
+  --info-color-dark: #1b729b;
+
+  --warning-color: #f97316;
+  --warning-color-dark: #e66000;
+
+  --help-color: #a453ef;
+  --help-color-dark: #9349d8;
+
+  --danger-color: #ef4444;
+  --danger-color-dark: #ca3b3b;
 }
 
 * {

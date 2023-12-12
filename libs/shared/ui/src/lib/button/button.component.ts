@@ -9,7 +9,15 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-type Severity = 'primary' | 'secondary' | 'default';
+type Severity =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'help'
+  | 'danger'
+  | 'default';
 
 @Component({
   selector: 'iv-button',
