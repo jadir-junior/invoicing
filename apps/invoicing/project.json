@@ -22,7 +22,10 @@
           "apps/invoicing/src/favicon.ico",
           "apps/invoicing/src/assets"
         ],
-        "styles": ["apps/invoicing/src/styles.css"],
+        "styles": [
+          "apps/invoicing/src/styles.css",
+          "libs/shared/ui/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {

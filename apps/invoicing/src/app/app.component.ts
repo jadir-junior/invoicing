@@ -1,6 +1,4 @@
 import { Component, Inject, OnDestroy, OnInit, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import {
   MSAL_GUARD_CONFIG,
   MsalBroadcastService,
@@ -14,16 +12,36 @@ import {
   InteractionStatus,
   RedirectRequest,
 } from '@azure/msal-browser';
-import { CardComponent } from '@invoicing/card';
+import {
+  CardComponent,
+  InputTextDirective,
+  IvButtonComponent,
+} from '@invoicing/ui';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, CardComponent, RouterModule],
+  imports: [
+    CardComponent,
+    ReactiveFormsModule,
+    InputTextDirective,
+    IvButtonComponent,
+  ],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, OnDestroy {
+  form: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
+
   isIframe = false;
   loginDisplay = false;
 
@@ -33,7 +51,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
-    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration
+    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -100,6 +119,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.authService.logoutRedirect();
+  }
+
+  onSubmit({ value, valid }: FormGroup): void {
+    console.log(value);
+    console.log(valid);
   }
 
   ngOnDestroy(): void {
