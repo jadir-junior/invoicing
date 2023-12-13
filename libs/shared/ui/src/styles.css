@@ -3,9 +3,11 @@
 
   --primary-color: #263148;
   --primary-color-dark: #19202d;
+  --primary-color-rgb: 38, 49, 72;
 
   --secondary-color: #f7dd72;
   --secondary-color-dark: #d6c066;
+  --secondary-color-rgb: 247, 221, 114;
 
   --success-color: #18ae4f;
   --success-color-dark: #159042;
