@@ -24,7 +24,8 @@
         ],
         "styles": [
           "apps/invoicing/src/styles.css",
-          "libs/shared/ui/src/styles.css"
+          "libs/shared/ui/src/styles.css",
+          "node_modules/@material-design-icons/font/index.css"
         ],
         "scripts": []
       },

@@ -37,6 +37,7 @@ body {
   font-size: 1rem;
   padding: 0.75rem 0.75rem;
   color: var(--text-color);
+  width: 100%;
   background: white;
   border: 1px solid #d1d5db;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s,

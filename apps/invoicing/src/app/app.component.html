@@ -1,5 +1,6 @@
+@if(!loginDisplay) {
 <div class="iv-sign-in">
-  <iv-card title="Sign in">
+  <iv-card title="Sign in" [style]="{ 'min-width': '400px', padding: '2rem' }">
     <p>Don't have an account? <a href="">Sign up</a></p>
     <form [formGroup]="form" (submit)="onSubmit(form)">
       <div class="form-group">
@@ -14,21 +15,30 @@
       </div>
       <div class="form-group">
         <label for="password">Password *</label>
-        <input
-          type="password"
-          ivInputText
-          formArrayName="password"
-          id="password"
-          name="password"
-        />
+        <span class="iv-input-icon-right">
+          <input
+            [type]="isShowingPassword ? 'text' : 'password'"
+            ivInputText
+            formControlName="password"
+            id="password"
+            name="password"
+          />
+          <i
+            class="material-icons-outlined iv-input-icon-clicked"
+            (click)="onChangeShowingPassword()"
+          >
+            {{ isShowingPassword ? 'visibility_off' : 'visibility' }}
+          </i>
+        </span>
       </div>
-      <iv-button type="submit">Submit</iv-button>
+      <iv-button type="submit" label="Submit" [block]="true"></iv-button>
     </form>
+    <iv-item-center>Or continue with</iv-item-center>
+    <iv-sign-in-with-microsoft
+      (onClick)="loginRedirect()"
+    ></iv-sign-in-with-microsoft>
   </iv-card>
 </div>
-<!--
-@if(!loginDisplay) {
-<button (click)="loginRedirect()">Login</button>
 } @else {
 <button (click)="logout()">Logout</button>
-} -->
+}

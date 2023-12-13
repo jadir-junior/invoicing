@@ -15,7 +15,9 @@ import {
 import {
   CardComponent,
   InputTextDirective,
+  ItemCenterComponent,
   IvButtonComponent,
+  SignInWithMicrosoftComponent,
 } from '@invoicing/ui';
 import {
   FormBuilder,
@@ -31,6 +33,8 @@ import {
     ReactiveFormsModule,
     InputTextDirective,
     IvButtonComponent,
+    ItemCenterComponent,
+    SignInWithMicrosoftComponent,
   ],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
@@ -41,6 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
+  isShowingPassword = false;
 
   isIframe = false;
   loginDisplay = false;
@@ -119,6 +124,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.authService.logoutRedirect();
+  }
+
+  onChangeShowingPassword(): void {
+    this.isShowingPassword = !this.isShowingPassword;
   }
 
   onSubmit({ value, valid }: FormGroup): void {

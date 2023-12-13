@@ -8,6 +8,15 @@ const meta: Meta<ItemCenterComponent> = {
 export default meta;
 type Story = StoryObj<ItemCenterComponent>;
 
-export const Basic: Story = {
-  args: {},
+export const Label: Story = {
+  args: {
+    label: 'Or continue with',
+  },
+};
+
+export const Content: Story = {
+  render: (args) => ({
+    props: args,
+    template: `<iv-item-center>Or continue with</iv-item-center>`,
+  }),
 };
