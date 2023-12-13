@@ -135,3 +135,38 @@
 .iv-button.iv-button-block {
   width: 100%;
 }
+
+/* Roundend */
+.iv-button.iv-button-rounded {
+  border-radius: 2rem;
+}
+
+.iv-button.iv-button-icon-only.iv-button-rounded {
+  height: 3rem;
+  border-radius: 50%;
+}
+
+/* Text */
+.iv-button.iv-button-primary.iv-button-text {
+  background: transparent;
+  color: var(--primary-color);
+  border-color: transparent;
+}
+
+.iv-button.iv-button-primary.iv-button-text:not(:disabled):hover {
+  background-color: rgba(var(--primary-color-rgb), 0.04);
+  color: var(--primary-color-dark);
+  border-color: transparent;
+}
+
+.iv-button.iv-button-secondary.iv-button-text {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border-color: transparent;
+}
+
+.iv-button.iv-button-secondary.iv-button-text:not(:disabled):hover {
+  background-color: rgba(var(--secondary-color), 0.04);
+  color: var(--secondary-color-dark);
+  border-color: transparent;
+}

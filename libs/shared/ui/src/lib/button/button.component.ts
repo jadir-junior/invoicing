@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Style } from '../models/style.model';
 
 type Severity =
   | 'primary'
@@ -19,10 +20,6 @@ type Severity =
   | 'danger'
   | 'default';
 
-interface Klass {
-  [klass: string]: string;
-}
-
 @Component({
   selector: 'iv-button',
   standalone: true,
@@ -32,12 +29,14 @@ interface Klass {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IvButtonComponent {
-  @Input() style?: Klass;
+  @Input() style?: Style;
 
   @Input() label: string | undefined;
   @Input() severity: Severity = 'primary';
   @Input() link = false;
   @Input() block = false;
+  @Input() rounded = false;
+  @Input() text = false;
 
   @Input() icon?: string;
   @Input() iconPosition: 'right' | 'left' = 'left';
@@ -66,6 +65,8 @@ export class IvButtonComponent {
       'iv-button-icon-only':
         !this.isContentEmpty() && !this.label ? true : false,
       'iv-button-block': this.block,
+      'iv-button-rounded': this.rounded,
+      'iv-button-text': this.text,
     };
   }
 }

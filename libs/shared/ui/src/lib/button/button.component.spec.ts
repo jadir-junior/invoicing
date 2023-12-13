@@ -211,4 +211,39 @@ describe('IvButtonComponent', () => {
 
     expect(screen.getByRole('button')).toHaveClass('iv-button-block');
   });
+
+  it('render a button with rounded', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        label: 'Submit',
+        rounded: true,
+      },
+    });
+
+    expect(screen.getByRole('button')).toHaveClass('iv-button-rounded');
+    expect(screen.getByRole('button')).not.toHaveClass('iv-button-icon-only');
+  });
+
+  it('render a button with rounded and icon only', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        icon: 'menu',
+        rounded: true,
+      },
+    });
+
+    expect(screen.getByRole('button')).toHaveClass('iv-button-rounded');
+    expect(screen.getByRole('button')).toHaveClass('iv-button-icon-only');
+  });
+
+  it('render a button with a text prop', async () => {
+    await render(IvButtonComponent, {
+      componentProperties: {
+        icon: 'menu',
+        text: true,
+      },
+    });
+
+    expect(screen.getByRole('button')).toHaveClass('iv-button-text');
+  });
 });

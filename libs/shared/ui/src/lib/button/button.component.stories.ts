@@ -85,3 +85,27 @@ export const Block: Story = {
     block: true,
   },
 };
+
+export const Rounded: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="display: flex; gap: 0.5rem;">
+        <iv-button [rounded]="true">Submit</iv-button>
+        <iv-button icon="menu" [rounded]="true"></iv-button>
+      </div>
+    `,
+  }),
+};
+
+export const Text: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="display: flex; gap: 0.5rem;">
+        <iv-button label="Primary" [text]="true"></iv-button>
+        <iv-button label="Secondary" severity="secondary" [text]="true"></iv-button>
+      </div>
+    `,
+  }),
+};
