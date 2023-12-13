@@ -1,7 +1,9 @@
 @if(!loginDisplay) {
 <div class="iv-sign-in">
   <iv-card title="Sign in" [style]="{ 'min-width': '400px', padding: '2rem' }">
-    <p>Don't have an account? <a href="">Sign up</a></p>
+    <p style="margin-bottom: 1rem">
+      Don't have an account? <a href="">Sign up</a>
+    </p>
     <form [formGroup]="form" (submit)="onSubmit(form)">
       <div class="form-group">
         <label for="email">Email address *</label>
@@ -12,6 +14,11 @@
           id="email"
           name="email"
         />
+        @if(email.invalid && email.dirty) { @if(email.hasError('required')) {
+        <iv-error>This field is required</iv-error>
+        } @else if(email.hasError('email')) {
+        <iv-error>This email is invalid</iv-error>
+        } }
       </div>
       <div class="form-group">
         <label for="password">Password *</label>
@@ -30,11 +37,25 @@
             {{ isShowingPassword ? 'visibility_off' : 'visibility' }}
           </i>
         </span>
+        @if(password.invalid && password.dirty) {
+        @if(password.hasError('required')) {
+        <iv-error>This field is required</iv-error>
+        } }
       </div>
-      <iv-button type="submit" label="Submit" [block]="true"></iv-button>
+      <iv-button
+        [style]="{
+          'margin-bottom': '1rem'
+        }"
+        type="submit"
+        label="Submit"
+        [block]="true"
+      ></iv-button>
     </form>
-    <iv-item-center>Or continue with</iv-item-center>
+    <iv-item-center [style]="{ 'margin-bottom': '1rem' }">
+      Or continue with
+    </iv-item-center>
     <iv-sign-in-with-microsoft
+      [style]="{ width: '100%' }"
       (onClick)="loginRedirect()"
     ></iv-sign-in-with-microsoft>
   </iv-card>

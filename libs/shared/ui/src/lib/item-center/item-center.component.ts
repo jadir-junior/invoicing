@@ -1,12 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+interface Klass {
+  [klass: string]: string;
+}
+
 @Component({
   selector: 'iv-item-center',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="iv-item-center">
+    <div class="iv-item-center" [style]="style">
       <div class="iv-item-center-divider"></div>
       @if(label) {
       <div class="iv-item-center-content">{{ label }}</div>
@@ -36,5 +40,6 @@ import { CommonModule } from '@angular/common';
   `,
 })
 export class ItemCenterComponent {
+  @Input() style?: Klass;
   @Input() label: string | undefined;
 }

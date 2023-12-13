@@ -14,6 +14,7 @@ import {
 } from '@azure/msal-browser';
 import {
   CardComponent,
+  ErrorComponent,
   InputTextDirective,
   ItemCenterComponent,
   IvButtonComponent,
@@ -21,6 +22,7 @@ import {
 } from '@invoicing/ui';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -35,6 +37,7 @@ import {
     IvButtonComponent,
     ItemCenterComponent,
     SignInWithMicrosoftComponent,
+    ErrorComponent,
   ],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
@@ -46,6 +49,14 @@ export class AppComponent implements OnInit, OnDestroy {
     password: ['', [Validators.required]],
   });
   isShowingPassword = false;
+
+  get email(): FormControl {
+    return this.form.get('email') as FormControl;
+  }
+
+  get password(): FormControl {
+    return this.form.get('password') as FormControl;
+  }
 
   isIframe = false;
   loginDisplay = false;

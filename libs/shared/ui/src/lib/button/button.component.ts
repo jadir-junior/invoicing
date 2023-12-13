@@ -19,6 +19,10 @@ type Severity =
   | 'danger'
   | 'default';
 
+interface Klass {
+  [klass: string]: string;
+}
+
 @Component({
   selector: 'iv-button',
   standalone: true,
@@ -28,6 +32,8 @@ type Severity =
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IvButtonComponent {
+  @Input() style?: Klass;
+
   @Input() label: string | undefined;
   @Input() severity: Severity = 'primary';
   @Input() link = false;

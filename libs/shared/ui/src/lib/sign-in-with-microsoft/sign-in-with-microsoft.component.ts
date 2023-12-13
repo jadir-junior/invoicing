@@ -1,11 +1,19 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+interface Klass {
+  [klass: string]: string;
+}
 
 @Component({
   selector: 'iv-sign-in-with-microsoft',
   standalone: true,
   imports: [CommonModule],
-  template: `<button class="iv-button-microsoft" (click)="onClick.emit()">
+  template: `<button
+    class="iv-button-microsoft"
+    (click)="onClick.emit()"
+    [style]="style"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="21"
@@ -32,6 +40,7 @@ import { CommonModule } from '@angular/common';
       color: #fff;
       background: #2f2f2f;
       cursor: pointer;
+      justify-content: center;
     }
 
     svg {
@@ -40,5 +49,6 @@ import { CommonModule } from '@angular/common';
   `,
 })
 export class SignInWithMicrosoftComponent {
+  @Input() style?: Klass;
   @Output() onClick = new EventEmitter();
 }
