@@ -8,3 +8,5 @@ export * from './lib/item-center/item-center.component';
 export * from './lib/sign-in-with-microsoft/sign-in-with-microsoft.component';
 
 export * from './lib/error/error.component';
+
+export * from './lib/toolbar/toolbar.component';
