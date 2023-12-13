@@ -27,6 +27,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -38,6 +39,7 @@ import {
     ItemCenterComponent,
     SignInWithMicrosoftComponent,
     ErrorComponent,
+    RouterModule,
   ],
   selector: 'invoicing-root',
   templateUrl: './app.component.html',
