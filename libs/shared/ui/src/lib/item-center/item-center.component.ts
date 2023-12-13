@@ -11,7 +11,9 @@ import { CommonModule } from '@angular/common';
       @if(label) {
       <div class="iv-item-center-content">{{ label }}</div>
       } @else {
-      <ng-content></ng-content>
+      <div class="iv-item-center-content">
+        <ng-content></ng-content>
+      </div>
       }
       <div class="iv-item-center-divider"></div>
     </div>
@@ -34,5 +36,5 @@ import { CommonModule } from '@angular/common';
   `,
 })
 export class ItemCenterComponent {
-  @Input({ required: true }) label!: string;
+  @Input() label: string | undefined;
 }
