@@ -1,0 +1,39 @@
+@if(!popup || visible) {
+<div
+  #container
+  [ngClass]="menuClasses"
+  (click)="onOverlayClick($event)"
+  [@overlayAnimation]="{
+    value: 'visible',
+    params: {
+      showTransitionParams: showTransitionOptions,
+      hideTransitionParams: hideTransitionOptions
+    }
+  }"
+  (@overlayAnimation.start)="onOverlayAnimationStart($event)"
+>
+  <ul #list role="menu">
+    @if(hasSubMenu()) {
+    <ng-template
+      ngFor
+      let-submenu
+      let-i="index"
+      [ngForOf]="model"
+    ></ng-template>
+    } @if(!hasSubMenu()) {
+    <ng-template ngFor let-item let-i="index" [ngForOf]="model">
+      @if(item.separator) {
+      <li class="iv-menuitem-separator"></li>
+      } @else {
+      <li
+        class="iv-menuitem"
+        [ivMenuItemContent]="item"
+        (onMenuItemClick)="itemClick($event)"
+      ></li>
+      }
+    </ng-template>
+    }
+  </ul>
+</div>
+
+}

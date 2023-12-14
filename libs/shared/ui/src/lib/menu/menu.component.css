@@ -1,0 +1,68 @@
+.iv-menu {
+  padding: 0.5rem 0;
+  background: white;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  width: 12.5rem;
+}
+
+.iv-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.iv-menu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.iv-menu.iv-menu-overlay {
+  background: white;
+  border: 0 none;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.iv-menu .iv-menuitem > .iv-menuitem-content {
+  color: var(--text-color);
+  transition: box-shadow 0.2s;
+  border-radius: 0;
+}
+
+.iv-menu .iv-menuitem > .iv-menuitem-content .iv-menuitem-link {
+  color: var(--text-color);
+  padding: 0.75rem 1.25rem;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.iv-menu
+  .iv-menuitem:not(.iv-highlight):not(.iv-disabled)
+  > .iv-menuitem-content:hover {
+  background: #f3f4f6;
+}
+
+.iv-menu
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link
+  .iv-menuitem-text {
+  color: var(--text-color);
+  line-height: 1;
+}
+
+.iv-menu
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link
+  .iv-menuitem-icon {
+  color: var(--text-color);
+  margin-right: 0.5rem;
+}

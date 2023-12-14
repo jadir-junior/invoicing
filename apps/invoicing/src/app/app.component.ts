@@ -135,10 +135,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout(): void {
-    this.authService.logoutRedirect();
-  }
-
   onChangeShowingPassword(): void {
     this.isShowingPassword = !this.isShowingPassword;
   }
