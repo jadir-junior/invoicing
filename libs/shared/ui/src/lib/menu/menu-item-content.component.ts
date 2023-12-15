@@ -21,8 +21,8 @@ import { MenuItem } from './menu-item.model';
     <a
       [attr.tabindex]="-1"
       [attr.aria-hidden]="true"
-      [attr.aria-label]="item.label"
-      [ngClass]="{ 'iv-disabled': item.disabled }"
+      [attr.aria-label]="item?.label"
+      [ngClass]="{ 'iv-disabled': item?.disabled }"
       class="iv-menuitem-link"
     >
       <ng-container
@@ -33,11 +33,11 @@ import { MenuItem } from './menu-item.model';
 
     <ng-template #itemContent>
       @if(item?.icon) {
-      <span class="material-icons-outlined iv-menuitem-icon">{{
-        item.icon
-      }}</span>
-      } @if(item.escape !== false) {
-      <span class="iv-menuitem-text">{{ item.label }}</span>
+      <span class="material-icons-outlined iv-menuitem-icon">
+        {{ item?.icon }}
+      </span>
+      } @if(item?.escape !== false) {
+      <span class="iv-menuitem-text">{{ item?.label }}</span>
       }
     </ng-template>
   </div>`,
@@ -45,7 +45,7 @@ import { MenuItem } from './menu-item.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class MenuItemContentComponent {
-  @Input('ivMenuItemContent') item?: MenuItem;
+  @Input('ivMenuItemContent') item!: MenuItem;
 
   @Input() itemTemplate?: HTMLElement;
 

@@ -66,3 +66,8 @@
   color: var(--text-color);
   margin-right: 0.5rem;
 }
+
+.iv-menu .iv-menuitem-separator {
+  border-top: 1px solid #e5e7eb;
+  margin: 0.25rem 0;
+}

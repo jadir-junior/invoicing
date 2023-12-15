@@ -132,6 +132,10 @@
   margin: 0;
 }
 
+.iv-button.iv-button-icon-only .iv-button-icon {
+  font-size: 1.5rem;
+}
+
 .iv-button.iv-button-block {
   width: 100%;
 }

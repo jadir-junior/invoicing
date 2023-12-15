@@ -1,8 +1,19 @@
-<iv-toolbar>
-  <iv-button
-    icon="logout"
-    [text]="true"
-    [rounded]="true"
-    (onClick)="logout()"
-  ></iv-button>
-</iv-toolbar>
+<div class="iv-admin-layout">
+  <div class="iv-admin-sidemenu">
+    <invoicing-sidemenu></invoicing-sidemenu>
+  </div>
+  <div class="iv-admin-main">
+    <iv-toolbar>
+      <div></div>
+      <ng-template ivTemplate="end">
+        <iv-button
+          icon="account_circle"
+          [text]="true"
+          [rounded]="true"
+          (onClick)="account.toggle($event)"
+        ></iv-button>
+        <iv-menu #account [popup]="true" [model]="accountMenu"></iv-menu>
+      </ng-template>
+    </iv-toolbar>
+  </div>
+</div>

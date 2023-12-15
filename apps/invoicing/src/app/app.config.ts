@@ -1,4 +1,5 @@
-import { ApplicationConfig } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import {
   provideRouter,
   withDisabledInitialNavigation,
@@ -35,6 +36,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes, initialNavigation),
     provideHttpClient(withInterceptorsFromDi()),
+    importProvidersFrom([BrowserAnimationsModule]),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,

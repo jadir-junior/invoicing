@@ -2,6 +2,7 @@
 <div
   #container
   [ngClass]="menuClasses"
+  [ngStyle]="style"
   (click)="onOverlayClick($event)"
   [@overlayAnimation]="{
     value: 'visible',
@@ -14,16 +15,30 @@
 >
   <ul #list role="menu">
     @if(hasSubMenu()) {
-    <ng-template
-      ngFor
-      let-submenu
-      let-i="index"
-      [ngForOf]="model"
-    ></ng-template>
+    <ng-template ngFor let-submenu let-i="index" [ngForOf]="model">
+      @if(submenu.separator) {
+      <li class="iv-menuitem-separator" role="separator"></li>
+      } @else {
+      <li class="iv-submenu-header">
+        <span>{{ submenu.label }}</span>
+      </li>
+      <ng-template ngFor let-item let-j="index" [ngForOf]="submenu.items">
+        @if(item.separator) {
+        <li class="iv-menuitem-separator" role="separator"></li>
+        } @else {
+        <li
+          class="iv-menuitem"
+          [ivMenuItemContent]="item"
+          (onMenuItemClick)="itemClick($event)"
+        ></li>
+        }
+      </ng-template>
+      }
+    </ng-template>
     } @if(!hasSubMenu()) {
     <ng-template ngFor let-item let-i="index" [ngForOf]="model">
       @if(item.separator) {
-      <li class="iv-menuitem-separator"></li>
+      <li class="iv-menuitem-separator" role="separator"></li>
       } @else {
       <li
         class="iv-menuitem"

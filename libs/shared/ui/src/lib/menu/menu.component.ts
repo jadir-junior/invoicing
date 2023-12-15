@@ -24,6 +24,7 @@ import { Config } from '../utils/config/config';
 import { DomHandler } from '../utils/dom/dom-handler';
 import { MenuItem } from './menu-item.model';
 import { MenuItemContentComponent } from './menu-item-content.component';
+import { Style } from '../models/style.model';
 
 type VoidListener = VoidFunction | null | undefined;
 
@@ -63,6 +64,7 @@ export class MenuComponent {
 
   @Input() showTransitionOptions = '.12s cubic-bezier(0, 0, 0.2, 1)';
   @Input() hideTransitionOptions = '.1s linear';
+  @Input() style?: Style;
 
   @Input() model?: MenuItem[];
 
@@ -102,12 +104,12 @@ export class MenuComponent {
     return false;
   }
 
-  toggle(event: MenuEvent): void {
+  toggle(event: Event): void {
     if (this.visible) {
       this.hide();
     } else {
       // check to add more features in show
-      this.show(event);
+      this.show(event as MenuEvent);
     }
 
     this.preventDocumentDefault = true;
