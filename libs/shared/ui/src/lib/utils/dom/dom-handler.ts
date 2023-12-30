@@ -196,6 +196,63 @@ export class DomHandler {
         );
   }
 
+  public static findSingle(
+    element: HTMLElement,
+    selector: string
+  ): HTMLElement | null {
+    return this.isElement(element) ? element.querySelector(selector) : null;
+  }
+
+  public static getAttribute(
+    element: HTMLElement,
+    name: string
+  ): string | number | boolean | null | undefined {
+    if (element) {
+      const value = element.getAttribute(name);
+
+      if (value && !isNaN(+value)) {
+        return +value;
+      }
+
+      if (value === 'true' || value === 'false') {
+        return value === 'true';
+      }
+
+      return value;
+    }
+
+    return undefined;
+  }
+
+  public static removeClass(element: HTMLElement, className: string): void {
+    if (element && className) {
+      if (element.classList) {
+        element.classList.remove(className);
+      } else {
+        element.className = element.className.replace(
+          new RegExp(
+            '(^|\\b)' + className.split(' ').join('|') + '(\\b|$)',
+            'gi'
+          ),
+          ' '
+        );
+      }
+    }
+  }
+
+  public static getHeight(element: HTMLElement): number {
+    let height = element.offsetHeight;
+    const style = getComputedStyle(element);
+
+    height -=
+      parseFloat(style.paddingTop) +
+      parseFloat(style.paddingBottom) +
+      parseFloat(style.borderTopWidth) +
+      parseFloat(style.borderBottomWidth);
+
+    return height;
+  }
+
   // public static overflowCheck(node: Node): boolean {
   // const overflowRegex = /(auto|scroll)/;
   // const styleDeclaration = window['getComputedStyle'](node, null);
