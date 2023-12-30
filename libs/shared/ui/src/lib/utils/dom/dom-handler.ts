@@ -307,6 +307,16 @@ export class DomHandler {
     };
   }
 
+  public static addClass(element: HTMLElement, className: string): void {
+    if (element && className) {
+      if (element.classList) {
+        element.classList.add(className);
+      } else {
+        element.className += ' ' + className;
+      }
+    }
+  }
+
   // public static overflowCheck(node: Node): boolean {
   // const overflowRegex = /(auto|scroll)/;
   // const styleDeclaration = window['getComputedStyle'](node, null);
