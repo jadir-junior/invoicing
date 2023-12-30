@@ -253,6 +253,19 @@ export class DomHandler {
     return height;
   }
 
+  public static getWidth(element: HTMLElement): number {
+    let width = element.offsetWidth;
+    const style = getComputedStyle(element);
+
+    width -=
+      parseFloat(style.paddingLeft) +
+      parseFloat(style.paddingRight) +
+      parseFloat(style.borderLeftWidth) +
+      parseFloat(style.borderRightWidth);
+
+    return width;
+  }
+
   // public static overflowCheck(node: Node): boolean {
   // const overflowRegex = /(auto|scroll)/;
   // const styleDeclaration = window['getComputedStyle'](node, null);
