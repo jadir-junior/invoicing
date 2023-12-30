@@ -266,7 +266,7 @@ export class DomHandler {
     return width;
   }
 
-  public static getOuterWidth(element: HTMLElement, margin?: number): number {
+  public static getOuterWidth(element: HTMLElement, margin?: boolean): number {
     let width = element.offsetWidth;
 
     if (margin) {
@@ -275,6 +275,17 @@ export class DomHandler {
     }
 
     return width;
+  }
+
+  public static getOuterHeight(element: HTMLElement, margin?: boolean): number {
+    let height = element.offsetHeight;
+
+    if (margin) {
+      const style = getComputedStyle(element);
+      height += parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+    }
+
+    return height;
   }
 
   // public static overflowCheck(node: Node): boolean {
