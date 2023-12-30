@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+
 interface zIndex {
   modal: number;
   overlay: number;
@@ -5,8 +7,11 @@ interface zIndex {
   tooltip: number;
 }
 
+@Injectable({ providedIn: 'root' })
 export class Config {
-  static zIndex: zIndex = {
+  ripple = true;
+
+  zIndex: zIndex = {
     modal: 1100,
     overlay: 1000,
     menu: 1000,

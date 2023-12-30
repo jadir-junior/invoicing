@@ -25,8 +25,7 @@ import { DomHandler } from '../utils/dom/dom-handler';
 import { MenuItem } from './menu-item.model';
 import { MenuItemContentComponent } from './menu-item-content.component';
 import { Style } from '../models/style.model';
-
-type VoidListener = VoidFunction | null | undefined;
+import { VoidListener } from '../utils/types/listener';
 
 interface Menu {
   currentTarget: HTMLElement;
@@ -89,7 +88,8 @@ export class MenuComponent {
     @Inject(DOCUMENT) private document: Document,
     private cd: ChangeDetectorRef,
     private overlayService: OverlayService,
-    private el: ElementRef
+    private el: ElementRef,
+    public config: Config
   ) {}
 
   hasSubMenu(): boolean {
@@ -169,7 +169,7 @@ export class MenuComponent {
       ZIndexUtils.set(
         'menu',
         this.container,
-        this.baseZIndex + Config.zIndex.menu
+        this.baseZIndex + this.config.zIndex.menu
       );
     }
   }
