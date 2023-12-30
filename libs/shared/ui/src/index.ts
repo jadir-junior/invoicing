@@ -13,3 +13,5 @@ export * from './lib/ripple/ripple.directive';
 // models and interfaces
 
 export * from './lib/menu/menu-item.model';
+
+export * from './lib/avatar/avatar.component';

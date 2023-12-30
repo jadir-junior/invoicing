@@ -1,0 +1,48 @@
+.iv-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+}
+
+.iv-avatar.iv-avatar-image {
+  background: transparent;
+}
+
+.iv-avatar.iv-avatar-circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.iv-avatar .iv-avatar-icon {
+  font-size: 1rem;
+}
+
+.iv-avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.iv-avatar.iv-avatar-large {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+.iv-avatar.iv-avatar-large .iv-avatar-icon {
+  font-size: 1.5rem;
+}
+
+.iv-avatar.iv-avatar-xlarge {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+}
+
+.iv-avatar.iv-avatar-xlarge .iv-avatar-icon {
+  font-size: 2rem;
+}
