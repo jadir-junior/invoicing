@@ -317,6 +317,14 @@ export class DomHandler {
     }
   }
 
+  public static removeElement(element: HTMLElement): void {
+    if (!('remove' in Element.prototype)) {
+      element.parentNode?.removeChild(element);
+    } else {
+      element.remove();
+    }
+  }
+
   // public static overflowCheck(node: Node): boolean {
   // const overflowRegex = /(auto|scroll)/;
   // const styleDeclaration = window['getComputedStyle'](node, null);
