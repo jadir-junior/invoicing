@@ -1,4 +1,9 @@
-<button [ngClass]="buttonClass" [style]="style" (click)="onClick.emit($event)">
+<button
+  [ngClass]="buttonClass"
+  [style]="style"
+  (click)="onClick.emit($event)"
+  ivRipple
+>
   @if(icon) {
   <span
     [ngClass]="iconClass"

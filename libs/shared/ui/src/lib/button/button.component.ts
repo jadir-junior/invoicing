@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Style } from '../models/style.model';
+import { RippleDirective } from '../ripple/ripple.directive';
 
 type Severity =
   | 'primary'
@@ -23,7 +24,7 @@ type Severity =
 @Component({
   selector: 'iv-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RippleDirective],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
