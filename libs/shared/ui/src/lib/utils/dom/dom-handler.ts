@@ -288,6 +288,25 @@ export class DomHandler {
     return height;
   }
 
+  public static getOffset(element: HTMLElement): { top: number; left: number } {
+    const rect = element.getBoundingClientRect();
+
+    return {
+      top:
+        rect.top +
+        (window.scrollY ||
+          document.documentElement.scrollTop ||
+          document.body.scrollTop ||
+          0),
+      left:
+        rect.left +
+        (window.scrollX ||
+          document.documentElement.scrollLeft ||
+          document.body.scrollLeft ||
+          0),
+    };
+  }
+
   // public static overflowCheck(node: Node): boolean {
   // const overflowRegex = /(auto|scroll)/;
   // const styleDeclaration = window['getComputedStyle'](node, null);
