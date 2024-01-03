@@ -1,0 +1,96 @@
+<ul
+  #list
+  role="tree"
+  [ngClass]="{ 'iv-submenu-list': true, 'iv-panelmenu-root-list': root }"
+  [tabindex]="-1"
+  [attr.aria-hidden]="!parentExpanded"
+  (focusin)="menuFocus.emit($event)"
+  (focusout)="menuBlur.emit($event)"
+>
+  <ng-template ngFor let-processedItem let-index="index" [ngForOf]="items">
+    @if (processedItem.separator) {
+      <li class="iv-menuitem-separator" role="separator"></li>
+    } @else if (!processedItem.separator && isItemVisible(processedItem)) {
+      <li
+        [ngClass]="{
+          'iv-menuitem': true,
+          'iv-disabled': isItemDisabled(processedItem)
+        }"
+        role="treeitem"
+        [attr.id]="getItemProp(processedItem, 'id')"
+        [attr.aria-label]="getItemProp(processedItem, 'label')"
+        [attr.aria-expanded]="
+          isItemGroup(processedItem) ? isItemActive(processedItem) : undefined
+        "
+        [attr.aria-level]="level + 1"
+      >
+        <div
+          class="iv-menuitem-content"
+          (click)="onItemClick($event, processedItem)"
+        >
+          @if (!itemTemplate) {
+            @if (!getItemProp(processedItem, 'routerLink')) {
+              <a
+                [attr.href]="getItemProp(processedItem, 'url')"
+                class="iv-menuitem-link"
+                [ngClass]="{
+                  'iv-disabled': getItemProp(processedItem, 'disabled')
+                }"
+                [target]="getItemProp(processedItem, 'target')"
+                [attr.tabindex]="!!parentExpanded ? '0' : '-1'"
+                ivRipple
+              >
+                <span class="iv-menuitem-description">
+                  @if (processedItem.icon) {
+                    <span class="material-icons-outlined iv-menuitem-icon">{{
+                      processedItem.icon
+                    }}</span>
+                  }
+                  <span
+                    class="iv-menuitem-text"
+                    [innerHTML]="getItemProp(processedItem, 'label')"
+                  ></span>
+                </span>
+                @if (isItemGroup(processedItem)) {
+                  @if (!panelMenu.submenuIconTemplate) {
+                    @if (isItemActive(processedItem)) {
+                      <span class="material-icons-outlined iv-submenu-icon">
+                        expand_less
+                      </span>
+                    } @else {
+                      <span class="material-icons-outlined iv-submenu-icon">
+                        expand_more
+                      </span>
+                    }
+                  }
+                  <ng-template
+                    *ngTemplateOutlet="panelMenu.submenuIconTemplate"
+                  ></ng-template>
+                }
+              </a>
+            } @else {}
+          }
+        </div>
+        <div
+          class="iv-toggleable-content"
+          [@submenu]="getAnimation(processedItem)"
+        >
+          @if (isItemVisible(processedItem) && isItemGroup(processedItem)) {
+            <iv-panel-menu-sub
+              [id]="getItemId(processedItem) + '_list'"
+              [panelId]="panelId"
+              [items]="processedItem.items"
+              [itemTemplate]="itemTemplate"
+              [transitionOptions]="transitionOptions"
+              [activeItemPath]="activeItemPath"
+              [level]="level + 1"
+              [parentExpanded]="
+                !!parentExpanded && isItemExpanded(processedItem)
+              "
+            ></iv-panel-menu-sub>
+          }
+        </div>
+      </li>
+    }
+  </ng-template>
+</ul>

@@ -6,13 +6,21 @@
     <iv-toolbar>
       <div></div>
       <ng-template ivTemplate="end">
-        <iv-button
-          icon="account_circle"
-          [text]="true"
-          [rounded]="true"
-          (onClick)="account.toggle($event)"
-        ></iv-button>
-        <iv-menu #account [popup]="true" [model]="accountMenu"></iv-menu>
+        <div #accountDiv>
+          <iv-button
+            icon="account_circle"
+            [text]="true"
+            [rounded]="true"
+            (onClick)="account.toggle($event)"
+          ></iv-button>
+        </div>
+
+        <iv-menu
+          #account
+          [popup]="true"
+          [model]="accountMenu"
+          [appendTo]="accountDiv"
+        ></iv-menu>
       </ng-template>
     </iv-toolbar>
   </div>

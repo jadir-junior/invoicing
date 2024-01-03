@@ -9,20 +9,18 @@ interface Viewport {
 }
 
 export class DomHandler {
-  public static isElement(obj: HTMLElement | string) {
-    return typeof HTMLElement === 'object'
-      ? obj instanceof HTMLElement
-      : obj &&
-          typeof obj === 'object' &&
-          obj !== null &&
-          obj.nodeType === 1 &&
-          obj.nodeName === 'string';
+  public static isElement(obj: HTMLElement | Element): boolean {
+    return (
+      obj &&
+      typeof obj === 'object' &&
+      obj !== null &&
+      obj.nodeType === 1 &&
+      obj.nodeName === 'string'
+    );
   }
 
-  public static appendChild(
-    element: HTMLElement,
-    target: HTMLElement | string
-  ) {
+  // TODO: TYPE THIS FUNCTION AND SEE TARGET IN ELSE IF
+  public static appendChild(element: HTMLElement, target: HTMLElement) {
     if (this.isElement(target)) {
       (target as HTMLElement).appendChild(element);
     } else if (target) {
@@ -197,7 +195,7 @@ export class DomHandler {
   }
 
   public static findSingle(
-    element: HTMLElement,
+    element: HTMLElement | Element,
     selector: string
   ): HTMLElement | null {
     return this.isElement(element) ? element.querySelector(selector) : null;
@@ -323,6 +321,10 @@ export class DomHandler {
     } else {
       element.remove();
     }
+  }
+
+  public static focus(element: HTMLElement, options?: FocusOptions): void {
+    element && document.activeElement !== element && element.focus(options);
   }
 
   // public static overflowCheck(node: Node): boolean {

@@ -6,16 +6,18 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuItem } from './menu-item.model';
+import { MenuItem } from '../menu-item.model';
+import { RippleDirective } from '../../ripple/ripple.directive';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[ivMenuItemContent]',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RippleDirective],
   template: `<div
     class="iv-menuitem-content"
     (click)="onItemClick($event, item)"
+    ivRipple
   >
     @if(!itemTemplate) { @if(!item?.routerLink) {
     <a

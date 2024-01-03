@@ -1,6 +1,8 @@
 :root {
   --text-color: #4b5563;
 
+  --background-item-menu-hover: #f3f4f6;
+
   --primary-color: #263148;
   --primary-color-dark: #19202d;
   --primary-color-rgb: 38, 49, 72;

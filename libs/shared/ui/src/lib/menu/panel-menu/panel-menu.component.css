@@ -1,0 +1,113 @@
+.iv-panelmenu .iv-panelmenu-header {
+  outline: 0 none;
+}
+
+.iv-panelmenu .iv-panelmenu-header .iv-panelmenu-header-content {
+  color: var(--text-color);
+  transition: box-shadow 0.2s;
+  padding: 0.75rem 1.25rem;
+}
+
+.iv-panelmenu
+  .iv-panelmenu-header:not(.iv-highlight):not(.iv-disabled):hover
+  .iv-panelmenu-header-content {
+  background: var(--background-item-menu-hover);
+}
+
+.iv-panelmenu .iv-panelmenu-header-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+.iv-panelmenu .iv-menuitem-icon-and-text {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.iv-panelmenu .iv-panelmenu-header-action:focus {
+  z-index: 1;
+}
+
+.iv-panelmenu .iv-menuitem-text {
+  line-height: 1;
+}
+
+.iv-panelmenu
+  .iv-panelmenu-header
+  .iv-panelmenu-header-content
+  .iv-panelmenu-header-action
+  .iv-menuitem-icon {
+  margin-right: 0.5rem;
+}
+
+.iv-panelmenu .iv-panelmenu-content .iv-panelmenu-root-list {
+  outline: 0 none;
+}
+
+.iv-panelmenu .iv-panelmenu-content .iv-menuitem > .iv-menuitem-content {
+  color: var(--text-color);
+  transition: box-shadow 0.2s;
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link {
+  padding: 0.75rem 1.25rem;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link
+  .iv-menuitem-description {
+  display: flex;
+  align-items: center;
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link:not(.iv-disbaled):hover {
+  background: var(--background-item-menu-hover);
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link
+  .iv-menuitem-icon {
+  margin-right: 0.5rem;
+}
+
+.iv-panelmenu-expanded.iv-toggleable-content:note(.ng-animating),
+.iv-panelmenu .iv-submenu-expanded:not(.ng-animating) {
+  overflow: visible;
+}
+
+.iv-panelmenu .iv-toggleable-content,
+.iv-panelmenu .iv-submenu-list {
+  overflow: hidden;
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-submenu-list:not(.iv-panelmenu-root-list) {
+  padding: 0 0 0 1rem;
+}

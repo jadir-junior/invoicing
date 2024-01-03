@@ -46,7 +46,7 @@
 .iv-menu
   .iv-menuitem:not(.iv-highlight):not(.iv-disabled)
   > .iv-menuitem-content:hover {
-  background: #f3f4f6;
+  background: var(--background-item-menu-hover);
 }
 
 .iv-menu

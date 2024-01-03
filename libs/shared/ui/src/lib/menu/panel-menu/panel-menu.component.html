@@ -1,0 +1,78 @@
+<div [ngClass]="panelMenuClass" [ngStyle]="style" #container>
+  @for(item of model; track index; let first = $first; let last = $last; let
+  index = $index) { @if(isItemVisible(item)) {
+  <div class="iv-panelmenu-panel">
+    <div
+      [ngClass]="{
+        'iv-panelmenu-header': true,
+        'iv-highlight': isItemActive(item),
+        'iv-disabled': isItemDisabled(item)
+      }"
+      [attr.id]="item.id"
+      [tabindex]="0"
+      role="button"
+      [attr.aria-expanded]="isItemActive(item)"
+      [attr.aria-label]="item.label"
+      [attr.aria-disabled]="isItemDisabled(item)"
+      (click)="onHeaderClick($event, item)"
+      ivRipple
+    >
+      <div class="iv-panelmenu-header-content">
+        @if(!item.routerLink) {
+        <a
+          [attr.href]="item.url"
+          [attr.tabindex]="-1"
+          [attr.title]="item.title"
+          [target]="item.target"
+          class="iv-panelmenu-header-action"
+        >
+          <span class="iv-menuitem-icon-and-text">
+            @if(item.icon) {
+            <span class="iv-menuitem-icon material-icons-outlined">
+              {{ item.icon }}
+            </span>
+            }
+            <span class="iv-menuitem-text" [innerHTML]="item.label"></span>
+          </span>
+          @if(isItemGroup(item)) { @if(!submenuIconTemplate) {
+          @if(isItemActive(item)) {
+          <span class="material-icons-outlined iv-submenu-icon">
+            expand_less
+          </span>
+          } @else {
+          <span class="material-icons-outlined iv-submenu-icon">
+            expand_more
+          </span>
+          } } @else {
+          <ng-template *ngTemplateOutlet="submenuIconTemplate"></ng-template>
+          } }
+        </a>
+        }
+      </div>
+    </div>
+    @if(isItemGroup(item)) {
+    <div
+      class="iv-toggleable-content"
+      role="region"
+      [ngClass]="{ 'iv-panelmenu-expanded': isItemActive(item) }"
+      [@rootItem]="getAnimation(item)"
+      (@rootItem.done)="onToggleDone()"
+      [attr.id]="item.id"
+    >
+      <div class="iv-panelmenu-content">
+        <iv-panel-menu-list
+          [panelId]="getPanelId(index, item)"
+          [items]="item.items"
+          [itemTemplate]="itemTemplate"
+          [transitionOptions]="transitionOptions"
+          [root]="true"
+          [activeItem]="activeItem()"
+          [tabindex]="tabindex"
+          [parentExpanded]="isItemActive(item)"
+        ></iv-panel-menu-list>
+      </div>
+    </div>
+    }
+  </div>
+  } }
+</div>

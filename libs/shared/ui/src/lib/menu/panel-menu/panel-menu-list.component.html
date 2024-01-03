@@ -1,0 +1,13 @@
+<iv-panel-menu-sub
+  #submenu
+  [root]="true"
+  [id]="panelId + '_id'"
+  [panelId]="panelId"
+  [tabindex]="tabindex"
+  [itemTemplate]="itemTemplate"
+  [activeItemPath]="activeItemPath()"
+  [transitionOptions]="transitionOptions"
+  [items]="processedItems()"
+  [parentExpanded]="parentExpanded"
+  (itemToggle)="onItemToggle($event)"
+></iv-panel-menu-sub>

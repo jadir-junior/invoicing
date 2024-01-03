@@ -11,7 +11,7 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { OverlayService } from '../services/overlay.service';
+import { OverlayService } from '../../services/overlay.service';
 import {
   AnimationEvent,
   animate,
@@ -19,13 +19,13 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { ZIndexUtils } from '../utils/z-index-utils/z-index-utils';
-import { Config } from '../utils/config/config';
-import { DomHandler } from '../utils/dom/dom-handler';
-import { MenuItem } from './menu-item.model';
+import { ZIndexUtils } from '../../utils/z-index-utils/z-index-utils';
+import { Config } from '../../utils/config/config';
+import { DomHandler } from '../../utils/dom/dom-handler';
+import { MenuItem } from '../menu-item.model';
 import { MenuItemContentComponent } from './menu-item-content.component';
-import { Style } from '../models/style.model';
-import { VoidListener } from '../utils/types/listener';
+import { Style } from '../../models/style.model';
+import { VoidListener } from '../../utils/types/listener';
 
 interface Menu {
   currentTarget: HTMLElement;

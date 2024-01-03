@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent, MenuItem } from '@invoicing/ui';
+import { MenuComponent, MenuItem, PanelMenuComponent } from '@invoicing/ui';
 
 @Component({
   selector: 'invoicing-sidemenu',
   standalone: true,
-  imports: [CommonModule, MenuComponent],
+  imports: [CommonModule, MenuComponent, PanelMenuComponent],
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.css',
 })
@@ -18,6 +18,24 @@ export class SidemenuComponent {
         {
           label: 'Frete',
           icon: 'local_shipping',
+          items: [
+            {
+              label: 'Aprovar Dados Diários',
+              icon: 'calendar_month',
+            },
+            {
+              label: 'Gerar Pré-Fatura',
+              icon: 'auto_stories',
+            },
+            {
+              label: 'Consultar Dados',
+              icon: 'query_stats',
+            },
+            {
+              label: 'Resumo e Detalhe',
+              icon: 'paid',
+            },
+          ],
         },
         {
           label: 'Operações Florestais',
