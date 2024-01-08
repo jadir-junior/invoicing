@@ -14,6 +14,13 @@
   background: var(--background-item-menu-hover);
 }
 
+.iv-panelmenu
+  .iv-panelmenu-header:not(.iv-highlight):not(.iv-disabled):hover
+  .iv-panelmenu-header-content
+  .iv-menuitem-icon {
+  transform: scale(1.1);
+}
+
 .iv-panelmenu .iv-panelmenu-header-action {
   display: flex;
   align-items: center;
@@ -65,6 +72,8 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .iv-panelmenu
@@ -81,8 +90,25 @@
   .iv-panelmenu-content
   .iv-menuitem
   > .iv-menuitem-content
-  .iv-menuitem-link:not(.iv-disbaled):hover {
+  .iv-menuitem-link:not(.iv-disbaled):not(.iv-menuitem-link-active):hover {
   background: var(--background-item-menu-hover);
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link-active {
+  background-color: var(--secondary-color);
+}
+
+.iv-panelmenu
+  .iv-panelmenu-content
+  .iv-menuitem
+  > .iv-menuitem-content
+  .iv-menuitem-link:not(.iv-disbaled):hover
+  .iv-menuitem-icon {
+  transform: scale(1.1);
 }
 
 .iv-panelmenu
@@ -94,7 +120,7 @@
   margin-right: 0.5rem;
 }
 
-.iv-panelmenu-expanded.iv-toggleable-content:note(.ng-animating),
+.iv-panelmenu-expanded.iv-toggleable-content:not(.ng-animating),
 .iv-panelmenu .iv-submenu-expanded:not(.ng-animating) {
   overflow: visible;
 }

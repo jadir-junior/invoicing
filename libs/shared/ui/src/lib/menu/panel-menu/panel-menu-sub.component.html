@@ -68,7 +68,65 @@
                   ></ng-template>
                 }
               </a>
-            } @else {}
+            } @else if (getItemProp(processedItem, 'routerLink')) {
+              <a
+                ivRipple
+                [routerLink]="getItemProp(processedItem, 'routerLink')"
+                [queryParams]="getItemProp(processedItem, 'queryParams')"
+                [routerLinkActive]="'iv-menuitem-link-active'"
+                [routerLinkActiveOptions]="
+                  getItemProp(processedItem, 'routerLinkActiveOptions') || {
+                    exact: false
+                  }
+                "
+                class="iv-menuitem-link"
+                [ngClass]="{
+                  'iv-disabled': getItemProp(processedItem, 'disabled')
+                }"
+                [target]="getItemProp(processedItem, 'target')"
+                [attr.title]="getItemProp(processedItem, 'title')"
+                [fragment]="getItemProp(processedItem, 'fragment')"
+                [queryParamsHandling]="
+                  getItemProp(processedItem, 'queryParamsHandling')
+                "
+                [preserveFragment]="
+                  getItemProp(processedItem, 'preserveFragment')
+                "
+                [skipLocationChange]="
+                  getItemProp(processedItem, 'skipLocationChange')
+                "
+                [replaceUrl]="getItemProp(processedItem, 'replaceUrl')"
+                [state]="getItemProp(processedItem, 'state')"
+              >
+                <span class="iv-menuitem-description">
+                  @if (processedItem.icon) {
+                    <span class="material-icons-outlined iv-menuitem-icon">{{
+                      processedItem.icon
+                    }}</span>
+                  }
+                  <span
+                    class="iv-menuitem-text"
+                    [innerHTML]="getItemProp(processedItem, 'label')"
+                  ></span>
+                </span>
+                @if (isItemGroup(processedItem)) {
+                  @if (!panelMenu.submenuIconTemplate) {
+                    @if (isItemActive(processedItem)) {
+                      <span class="material-icons-outlined iv-submenu-icon">
+                        expand_less
+                      </span>
+                    } @else {
+                      <span class="material-icons-outlined iv-submenu-icon">
+                        expand_more
+                      </span>
+                    }
+                  }
+                  <ng-template
+                    *ngTemplateOutlet="panelMenu.submenuIconTemplate"
+                  ></ng-template>
+                }
+              </a>
+            }
           }
         </div>
         <div

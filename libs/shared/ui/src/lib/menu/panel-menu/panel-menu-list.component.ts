@@ -9,24 +9,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateComponent } from '../../template/template.component';
-import { MenuItem } from '../menu-item.model';
-import {
-  ItemToggleEvent,
-  PanelMenuSubComponent,
-} from './panel-menu-sub.component';
-
-export interface ProcessedItem {
-  icon?: string;
-  expanded?: boolean;
-  separator?: boolean;
-  item: MenuItem;
-  items?: ProcessedItem[];
-  index: number;
-  level: number;
-  key: string;
-  parent: MenuItem;
-  parentKey: string;
-}
+import { ItemToggleEvent, MenuItem, ProcessedItem } from '../menu-item.model';
+import { PanelMenuSubComponent } from './panel-menu-sub.component';
 
 @Component({
   selector: 'iv-panel-menu-list',

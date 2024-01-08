@@ -47,7 +47,7 @@ export class ObjectUtils {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public static isFunction(obj: object | string | undefined): boolean {
+  public static isFunction(obj: string | any[] | null | undefined): boolean {
     return typeof obj === 'function' ? true : false;
   }
 
@@ -57,7 +57,7 @@ export class ObjectUtils {
   }
 
   public static isEmpty<T>(
-    value: null | undefined | string | Array<T> | Date | object
+    value: null | undefined | string | Array<T> | Date | object,
   ): boolean {
     return (
       value === null ||
@@ -71,7 +71,7 @@ export class ObjectUtils {
   }
 
   public static isNotEmpty<T>(
-    value: null | undefined | string | Array<T> | Date | object
+    value: null | undefined | string | Array<T> | Date | object,
   ) {
     return !this.isEmpty(value);
   }
@@ -99,7 +99,12 @@ export class ObjectUtils {
     }
   }
 
-  public static getItemValue<T>(obj: object | string, params: T) {
+  public static getItemValue<T>(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    obj: string | any[] | null,
+    params: T,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): string | any[] | null {
     return this.isFunction(obj) ? obj : obj;
   }
 }

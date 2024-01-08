@@ -1,7 +1,6 @@
 import {
   Component,
   EventEmitter,
-  Inject,
   Input,
   Output,
   TemplateRef,
@@ -10,7 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateComponent } from '../../template/template.component';
-import { MenuItem } from '../menu-item.model';
+import { ItemToggleEvent, MenuItem, ProcessedItem } from '../menu-item.model';
 import { ObjectUtils } from '../../utils/object-utils/object-utils';
 import { PanelMenuAnimation, PanelMenuComponent } from './panel-menu.component';
 import {
@@ -20,19 +19,18 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { ProcessedItem } from './panel-menu-list.component';
+import { RouterModule } from '@angular/router';
 import { RippleDirective } from '../../ripple/ripple.directive';
-
-export interface ItemToggleEvent {
-  originalEvent: Event;
-  processedItem?: ProcessedItem;
-  expanded?: boolean;
-}
 
 @Component({
   selector: 'iv-panel-menu-sub',
   standalone: true,
-  imports: [CommonModule, RippleDirective],
+  imports: [
+    CommonModule,
+    RouterModule,
+    RippleDirective,
+    forwardRef(() => PanelMenuComponent),
+  ],
   templateUrl: './panel-menu-sub.component.html',
   styleUrl: './panel-menu.component.css',
   encapsulation: ViewEncapsulation.None,
@@ -60,16 +58,14 @@ export class PanelMenuSubComponent {
   @Output() menuFocus = new EventEmitter();
   @Output() menuBlur = new EventEmitter();
 
-  constructor(
-    @Inject(forwardRef(() => PanelMenuComponent))
-    public panelMenu: PanelMenuComponent,
-  ) {}
+  constructor(public panelMenu: PanelMenuComponent) {}
 
   getItemProp(
     processedItem: ProcessedItem,
     name: string,
     params?: { originalEvent: Event; item: MenuItem },
-  ): object | string | boolean | undefined {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): any {
     return processedItem && processedItem.item
       ? ObjectUtils.getItemValue(processedItem.item[name], params)
       : undefined;
@@ -117,7 +113,7 @@ export class PanelMenuSubComponent {
   }
 
   isItemDisabled(processedItem: ProcessedItem): boolean {
-    return this.getItemProp(processedItem, 'disabled') as boolean;
+    return this.getItemProp(processedItem, 'disabled') ? true : false;
   }
 
   onItemClick(event: Event, processedItem: ProcessedItem): void {

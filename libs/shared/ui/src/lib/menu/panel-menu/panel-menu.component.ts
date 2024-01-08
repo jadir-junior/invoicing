@@ -25,6 +25,7 @@ import { TemplateComponent } from '../../template/template.component';
 import { IvTemplate } from '../../template/iv-template.directive';
 import { RippleDirective } from '../../ripple/ripple.directive';
 import { PanelMenuListComponent } from './panel-menu-list.component';
+import { PanelMenuSubComponent } from './panel-menu-sub.component';
 
 interface AnimationParams {
   transitionParams?: string;
@@ -39,7 +40,12 @@ export interface PanelMenuAnimation {
 @Component({
   selector: 'iv-panel-menu',
   standalone: true,
-  imports: [CommonModule, RippleDirective, PanelMenuListComponent],
+  imports: [
+    CommonModule,
+    RippleDirective,
+    PanelMenuListComponent,
+    PanelMenuSubComponent,
+  ],
   templateUrl: './panel-menu.component.html',
   styleUrl: './panel-menu.component.css',
   animations: [

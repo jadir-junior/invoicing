@@ -26,3 +26,22 @@ export interface MenuItemCommandEvent {
   item?: MenuItem;
   index?: number;
 }
+
+export interface ItemToggleEvent {
+  originalEvent: Event;
+  processedItem?: ProcessedItem;
+  expanded?: boolean;
+}
+
+export interface ProcessedItem {
+  icon?: string;
+  expanded?: boolean;
+  separator?: boolean;
+  item: MenuItem;
+  items?: ProcessedItem[];
+  index: number;
+  level: number;
+  key: string;
+  parent: MenuItem;
+  parentKey: string;
+}

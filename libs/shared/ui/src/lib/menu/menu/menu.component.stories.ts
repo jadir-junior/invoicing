@@ -5,7 +5,7 @@ import {
   applicationConfig,
 } from '@storybook/angular';
 import { MenuComponent } from './menu.component';
-import { IvButtonComponent } from '../button/button.component';
+import { IvButtonComponent } from '../../button/button.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 const meta: Meta<MenuComponent> = {

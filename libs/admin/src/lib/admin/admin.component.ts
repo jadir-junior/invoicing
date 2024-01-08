@@ -9,6 +9,7 @@ import {
 } from '@invoicing/ui';
 import { MsalService } from '@azure/msal-angular';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'invoicing-admin',
@@ -20,6 +21,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     MenuComponent,
     IvTemplate,
     SidemenuComponent,
+    RouterModule,
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
