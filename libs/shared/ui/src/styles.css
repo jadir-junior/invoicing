@@ -37,6 +37,10 @@ body {
   min-height: 100%;
 }
 
+.iv-disabled {
+  opacity: 0.6;
+}
+
 .iv-input-text {
   font-size: 1rem;
   padding: 0.75rem 0.75rem;
@@ -44,7 +48,10 @@ body {
   width: 100%;
   background: white;
   border: 1px solid #d1d5db;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
     box-shadow 0.2s;
   appearance: none;
   border-radius: 6px;

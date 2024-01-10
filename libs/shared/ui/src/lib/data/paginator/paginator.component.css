@@ -1,0 +1,48 @@
+.iv-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: white;
+  color: #6b7280;
+  border: 0 solid #f3f4f6;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.iv-paginator .iv-paginator-first,
+.iv-paginator .iv-paginator-prev,
+.iv-paginator .iv-paginator-page {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+  border: 0 none;
+  min-width: 3rem;
+  height: 3rem;
+  margin: 0.143rem;
+  transition: box-shadow 0.2s;
+  border-radius: 50%;
+}
+
+.iv-paginator .iv-paginator-first:disabled,
+.iv-paginator .iv-paginator-prev:disabled {
+  cursor: inherit;
+}
+
+.iv-paginator .iv-paginator-first:not(.iv-disabled):not(.iv-highlight):hover,
+.iv-paginator .iv-paginator-prev:not(.iv-disabled):not(.iv-highlight):hover,
+.iv-paginator .iv-paginator-page:not(.iv-disabled):not(.iv-highlight):hover {
+  background: #f3f4f6;
+  border-color: transparent;
+}
+
+.iv-paginator .iv-paginator-pages .iv-paginator-page.iv-highlight {
+  background-color: var(--primary-color);
+  color: white;
+}

@@ -16,3 +16,7 @@ export * from './lib/menu/panel-menu/panel-menu.component';
 export * from './lib/menu/menu-item.model';
 
 export * from './lib/avatar/avatar.component';
+
+export * from './lib/data/paginator/paginator.component';
+
+export * from './lib/icon/icon.component';

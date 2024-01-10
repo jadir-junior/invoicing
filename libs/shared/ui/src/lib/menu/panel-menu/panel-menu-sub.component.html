@@ -24,10 +24,7 @@
         "
         [attr.aria-level]="level + 1"
       >
-        <div
-          class="iv-menuitem-content"
-          (click)="onItemClick($event, processedItem)"
-        >
+        <div class="iv-menuitem-content" (click)="onItemClick($event, processedItem)">
           @if (!itemTemplate) {
             @if (!getItemProp(processedItem, 'routerLink')) {
               <a
@@ -86,23 +83,17 @@
                 [target]="getItemProp(processedItem, 'target')"
                 [attr.title]="getItemProp(processedItem, 'title')"
                 [fragment]="getItemProp(processedItem, 'fragment')"
-                [queryParamsHandling]="
-                  getItemProp(processedItem, 'queryParamsHandling')
-                "
-                [preserveFragment]="
-                  getItemProp(processedItem, 'preserveFragment')
-                "
-                [skipLocationChange]="
-                  getItemProp(processedItem, 'skipLocationChange')
-                "
+                [queryParamsHandling]="getItemProp(processedItem, 'queryParamsHandling')"
+                [preserveFragment]="getItemProp(processedItem, 'preserveFragment')"
+                [skipLocationChange]="getItemProp(processedItem, 'skipLocationChange')"
                 [replaceUrl]="getItemProp(processedItem, 'replaceUrl')"
                 [state]="getItemProp(processedItem, 'state')"
               >
                 <span class="iv-menuitem-description">
                   @if (processedItem.icon) {
-                    <span class="material-icons-outlined iv-menuitem-icon">{{
-                      processedItem.icon
-                    }}</span>
+                    <span class="material-icons-outlined iv-menuitem-icon">
+                      {{ processedItem.icon }}
+                    </span>
                   }
                   <span
                     class="iv-menuitem-text"
@@ -129,10 +120,7 @@
             }
           }
         </div>
-        <div
-          class="iv-toggleable-content"
-          [@submenu]="getAnimation(processedItem)"
-        >
+        <div class="iv-toggleable-content" [@submenu]="getAnimation(processedItem)">
           @if (isItemVisible(processedItem) && isItemGroup(processedItem)) {
             <iv-panel-menu-sub
               [id]="getItemId(processedItem) + '_list'"
@@ -142,9 +130,8 @@
               [transitionOptions]="transitionOptions"
               [activeItemPath]="activeItemPath"
               [level]="level + 1"
-              [parentExpanded]="
-                !!parentExpanded && isItemExpanded(processedItem)
-              "
+              [parentExpanded]="!!parentExpanded && isItemExpanded(processedItem)"
+              (itemToggle)="onItemToggle($event)"
             ></iv-panel-menu-sub>
           }
         </div>

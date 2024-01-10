@@ -1,1 +1,8 @@
-<p>daily-data works!</p>
+<iv-card>
+  <iv-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="120"
+  ></iv-paginator>
+</iv-card>

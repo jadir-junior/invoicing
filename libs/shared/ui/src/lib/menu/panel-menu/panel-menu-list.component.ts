@@ -55,7 +55,7 @@ export class PanelMenuListComponent implements OnChanges {
       const key = (parentKey !== '' ? parentKey + '_' : '') + index;
       const newProcessedItem: ProcessedItem = {
         icon: item.icon ?? '',
-        expanded: item.expanded ?? false,
+        expanded: item.expanded ? true : false,
         separator: item.separator ?? false,
         item: item,
         index: index,
@@ -81,15 +81,14 @@ export class PanelMenuListComponent implements OnChanges {
   }
 
   isItemActive(processedItem: MenuItem) {
-    return this.activeItemPath().some(
-      (path) => path.key === processedItem.parentKey,
-    );
+    return this.activeItemPath().some((path) => path.key === processedItem.parentKey);
   }
 
   onItemToggle(event: ItemToggleEvent): void {
     const { processedItem, expanded } = event;
-    if (processedItem?.expanded) {
-      processedItem.expanded = !processedItem?.expanded;
+
+    if (processedItem) {
+      processedItem.expanded = !processedItem.expanded;
     }
 
     const activeItemPath = this.activeItemPath().filter(

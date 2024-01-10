@@ -6,19 +6,14 @@ import {
   TemplateRef,
   ViewEncapsulation,
   forwardRef,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateComponent } from '../../template/template.component';
 import { ItemToggleEvent, MenuItem, ProcessedItem } from '../menu-item.model';
 import { ObjectUtils } from '../../utils/object-utils/object-utils';
 import { PanelMenuAnimation, PanelMenuComponent } from './panel-menu.component';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { RouterModule } from '@angular/router';
 import { RippleDirective } from '../../ripple/ripple.directive';
 
@@ -49,7 +44,7 @@ export class PanelMenuSubComponent {
 
   @Input() panelId?: string;
   @Input() itemTemplate?: TemplateRef<TemplateComponent>;
-  @Input() activeItemPath?: MenuItem[];
+  @Input() activeItemPath: MenuItem[] = [];
   @Input() transitionOptions?: string;
   @Input() items?: ProcessedItem[];
   @Input() level = 0;
@@ -58,7 +53,7 @@ export class PanelMenuSubComponent {
   @Output() menuFocus = new EventEmitter();
   @Output() menuBlur = new EventEmitter();
 
-  constructor(public panelMenu: PanelMenuComponent) {}
+  panelMenu = inject(PanelMenuComponent);
 
   getItemProp(
     processedItem: ProcessedItem,
@@ -106,9 +101,9 @@ export class PanelMenuSubComponent {
   }
 
   isItemActive(processedItem: MenuItem): boolean {
-    return !!(
+    return (
       this.isItemExpanded(processedItem) ||
-      this.activeItemPath?.some((path) => path?.key === processedItem?.key)
+      this.activeItemPath.some((path) => path?.key === processedItem?.key)
     );
   }
 
@@ -122,6 +117,7 @@ export class PanelMenuSubComponent {
         originalEvent: event,
         item: processedItem.item,
       });
+
       this.itemToggle.emit({
         originalEvent: event,
         processedItem: processedItem,
@@ -130,7 +126,7 @@ export class PanelMenuSubComponent {
     }
   }
 
-  onItemToggle(event: Event) {
-    this.itemToggle.emit({ originalEvent: event });
+  onItemToggle(event: ItemToggleEvent) {
+    this.itemToggle.emit(event);
   }
 }

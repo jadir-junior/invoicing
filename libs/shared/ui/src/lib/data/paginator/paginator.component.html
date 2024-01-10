@@ -1,0 +1,48 @@
+@if (alwaysShow) {
+  <div [ngClass]="{ 'iv-paginator': true }">
+    @if (showCurrentPageReport) {
+      <span class="iv-paginator-current">{{ currentPageReport }}</span>
+    }
+    @if (showFirstLastIcon) {
+      <button
+        type="button"
+        [disabled]="isFirstPage() || empty()"
+        (click)="changePageToFirst($event)"
+        ivRipple
+        class="iv-paginator-first iv-paginator-element iv-link"
+        [ngClass]="{ 'iv-disabled': isFirstPage() || empty() }"
+      >
+        @if (!firstPageLinkIconTemplate) {
+          <iv-icon icon="keyboard_double_arrow_left"></iv-icon>
+        }
+      </button>
+    }
+    <button
+      type="button"
+      [disabled]="isFirstPage() || empty()"
+      (click)="changePageToPrev($event)"
+      ivRipple
+      class="iv-paginator-prev iv-paginator-element iv-link"
+      [ngClass]="{ 'iv-disabled': isFirstPage() || empty() }"
+    >
+      @if (!previousPageLinkIconTemplate) {
+        <iv-icon icon="chevron_left"></iv-icon>
+      }
+    </button>
+    @if (showPageLinks) {
+      <span class="iv-paginator-pages">
+        @for (pageLink of pageLinks; track pageLink) {
+          <button
+            type="button"
+            class="iv-paginator-page iv-paginator-element iv-link"
+            [ngClass]="{ 'iv-highlight': pageLink - 1 === getPage() }"
+            (click)="onPageLinkClick($event, pageLink - 1)"
+            ivRipple
+          >
+            {{ getLocalization(pageLink) }}
+          </button>
+        }
+      </span>
+    }
+  </div>
+} @else {}

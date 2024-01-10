@@ -1,3 +1,7 @@
+.iv-panelmenu {
+  background-color: white;
+}
+
 .iv-panelmenu .iv-panelmenu-header {
   outline: 0 none;
 }
@@ -132,8 +136,6 @@
   padding-left: 0.5rem;
 }
 
-.iv-panelmenu
-  .iv-panelmenu-content
-  .iv-submenu-list:not(.iv-panelmenu-root-list) {
+.iv-panelmenu .iv-panelmenu-content .iv-submenu-list:not(.iv-panelmenu-root-list) {
   padding: 0 0 0 1rem;
 }
